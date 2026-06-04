@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/digital-learning-steam-student.png'
+import curriculumImg from '../assets/curriculum-collaborative-learning.png'
 
 const DigitalLearning = () => {
   const features = [
@@ -103,14 +105,13 @@ const DigitalLearning = () => {
                 </Link>
               </div>
             </div>
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative flex justify-center">
+              <div className="relative w-full max-w-md rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-100 via-indigo-50 to-white p-6 sm:p-8 ring-1 ring-white/40">
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Digital Learning"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Student with STEAM Science textbook at Narayana's Kids"
+                  className="w-full h-auto max-h-[480px] object-contain object-bottom mx-auto drop-shadow-lg"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-600/50 to-transparent"></div>
               </div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-yellow-400 rounded-full blur-2xl opacity-30"></div>
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-purple-400 rounded-full blur-2xl opacity-30"></div>
@@ -149,9 +150,9 @@ const DigitalLearning = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Students using digital learning"
-                className="w-full rounded-2xl shadow-2xl"
+                src={curriculumImg}
+                alt="Students using laptops and learning tools in a collaborative classroom"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3]"
               />
             </div>
             <div>

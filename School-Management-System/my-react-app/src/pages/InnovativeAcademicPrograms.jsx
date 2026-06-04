@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/curriculum-collaborative-learning.png'
+import thematicImg from '../assets/thematic-classroom-writing.png'
 
 const InnovativeAcademicPrograms = () => {
   const programs = [
@@ -106,9 +108,9 @@ const InnovativeAcademicPrograms = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Academic Programs"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Students engaged in collaborative learning with technology and creative activities"
+                  className="w-full h-[500px] object-cover object-[center_35%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-600/50 to-transparent"></div>
               </div>
@@ -147,9 +149,9 @@ const InnovativeAcademicPrograms = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Academic Excellence"
-                className="w-full rounded-2xl shadow-2xl"
+                src={thematicImg}
+                alt="Students focused on writing and classroom work"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3]"
               />
             </div>
             <div>

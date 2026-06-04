@@ -1,22 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/challenge-students-trophies.png'
+import thematicImg from '../assets/thematic-classroom-writing.png'
+import curriculumImg from '../assets/curriculum-collaborative-learning.png'
 
 const AcademicChallenges = () => {
   const challengeTypes = [
     {
       title: "Quiz Leagues",
       description: "Weekly adaptive quizzes across subjects award XP points, streak badges, and house credits.",
-      image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+      image: thematicImg
     },
     {
       title: "Innovation Hackathons",
       description: "Collaborative design sprints challenge students to solve real-world problems with creative prototypes.",
-      image: "https://images.unsplash.com/photo-1511376777868-611b54f68947?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+      image: heroImg
     },
     {
       title: "Debates & Public Speaking",
       description: "Structured debates, model UN simulations, and storytelling nights with AI-powered feedback.",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+      image: curriculumImg
     },
     {
       title: "Coding & Robotics Challenges",
@@ -100,9 +103,9 @@ const AcademicChallenges = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                  alt="Academic Challenges"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Narayana's Kids students proudly holding competition trophies"
+                  className="w-full h-[500px] object-cover object-[center_40%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-600/50 to-transparent"></div>
               </div>
@@ -138,9 +141,9 @@ const AcademicChallenges = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                alt="Leaderboard"
-                className="w-full rounded-2xl shadow-2xl"
+                src={thematicImg}
+                alt="Students engaged in focused academic work"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3]"
               />
             </div>
             <div>

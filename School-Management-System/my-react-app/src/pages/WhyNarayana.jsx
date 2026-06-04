@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import curriculumImg from '../assets/curriculum-collaborative-learning.png'
+import infraImg from '../assets/infra-smartboard-classroom.png'
+import labsImg from '../assets/lab-digital-whiteboard-waves.png'
 
 const WhyNarayana = () => {
   const rightCurriculum = {
@@ -9,6 +12,7 @@ const WhyNarayana = () => {
       {
         title: "Digital Learning",
         description: "State-of-the-art digital learning platforms that provide interactive content, personalized learning paths, and 24/7 access to educational resources.",
+        href: "/digital-learning",
         icon: (
           <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -18,6 +22,7 @@ const WhyNarayana = () => {
       {
         title: "Innovation Lab",
         description: "Cutting-edge laboratory facilities for STEM education, robotics, coding, and hands-on experimentation that sparks innovation.",
+        href: "/innovation-lab",
         icon: (
           <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -27,6 +32,7 @@ const WhyNarayana = () => {
       {
         title: "Innovative Academic Programs",
         description: "Well-structured academic programs that combine traditional learning with modern methodologies to ensure comprehensive understanding.",
+        href: "/innovative-academic-programs",
         icon: (
           <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -36,6 +42,7 @@ const WhyNarayana = () => {
       {
         title: "Thematic Learning Program",
         description: "Integrated thematic learning approach that connects different subjects and promotes holistic understanding of concepts.",
+        href: "/thematic-learning-program",
         icon: (
           <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
@@ -75,6 +82,9 @@ const WhyNarayana = () => {
       {
         title: "School Infrastructure",
         description: "Modern infrastructure with spacious classrooms, well-equipped laboratories, libraries, and recreational facilities that support comprehensive learning.",
+        href: "/school-infrastructure",
+        image: infraImg,
+        imageAlt: "Teacher using a smartboard in a primary classroom at M.S.S.E. School Washim",
         icon: (
           <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -84,6 +94,9 @@ const WhyNarayana = () => {
       {
         title: "Our Labs",
         description: "State-of-the-art science, computer, and innovation labs equipped with latest technology and equipment for hands-on learning experiences.",
+        href: "/our-labs",
+        image: labsImg,
+        imageAlt: "Students learning with an interactive WAVES digital whiteboard",
         icon: (
           <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -171,18 +184,43 @@ const WhyNarayana = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">{rightCurriculum.title}</h2>
               <p className="text-lg text-slate-600 max-w-3xl mx-auto">{rightCurriculum.description}</p>
             </div>
+
+            <div className="relative mb-12 rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200/80 group">
+              <img
+                src={curriculumImg}
+                alt="Students collaborating with laptops, globes, and creative projects at Narayana's Kids Washim"
+                className="w-full h-56 sm:h-72 md:h-80 object-cover object-[center_40%] transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <p className="text-sm font-medium text-blue-100 mb-1">Hands-on, integrated learning</p>
+                <p className="text-lg font-semibold max-w-2xl">
+                  Technology, geography, literacy, and creativity come together in every classroom — preparing students for real-world challenges.
+                </p>
+              </div>
+            </div>
             
             <div className="grid md:grid-cols-2 gap-8">
               {rightCurriculum.items.map((item, index) => (
-                <div key={index} className="flex items-start space-x-4 p-6 rounded-xl hover:bg-blue-50 transition-colors duration-300">
+                <Link
+                  key={index}
+                  to={item.href}
+                  className="group flex items-start space-x-4 p-6 rounded-xl hover:bg-blue-50 transition-colors duration-300 border border-transparent hover:border-blue-100"
+                >
                   <div className="w-16 h-16 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-800 mb-2">{item.title}</h3>
+                    <h3 className="text-xl font-semibold text-slate-800 mb-2 group-hover:text-blue-700">{item.title}</h3>
                     <p className="text-slate-600">{item.description}</p>
+                    <span className="inline-flex items-center mt-3 text-sm font-medium text-blue-600">
+                      Learn more
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -223,13 +261,27 @@ const WhyNarayana = () => {
           
           <div className="grid md:grid-cols-2 gap-8">
             {rightEnvironment.items.map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow duration-300">
-                <div className="w-16 h-16 bg-slate-100 rounded-xl flex items-center justify-center mb-6">
-                  {item.icon}
+              <Link
+                key={index}
+                to={item.href}
+                className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="relative h-52 sm:h-56 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/90 rounded-xl flex items-center justify-center shadow-md">
+                    {item.icon}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-4">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{item.description}</p>
-              </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-slate-800 mb-4 group-hover:text-blue-700 transition-colors">{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

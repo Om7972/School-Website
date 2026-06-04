@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import hydraulicLiftImg from '../assets/hydraulic-lift-science-project.png'
+import microbialCycleImg from '../assets/microbial-cycle-rangoli.png'
+import classroomImg from '../assets/classroom-students-writing.png'
 
 const InnovationLab = () => {
   const labFeatures = [
@@ -118,9 +121,9 @@ const InnovationLab = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Innovation Lab"
-                  className="w-full h-[500px] object-cover"
+                  src={hydraulicLiftImg}
+                  alt="Students presenting the Hydraulic Lift Footpath science project"
+                  className="w-full h-[500px] object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/50 to-transparent"></div>
               </div>
@@ -196,39 +199,39 @@ const InnovationLab = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-lg group">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg group ring-1 ring-slate-200/80">
               <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Robotics"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                src={hydraulicLiftImg}
+                alt="Hydraulic Lift Footpath science exhibition project"
+                className="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h4 className="text-lg font-semibold">Robotics Workshop</h4>
+                  <h4 className="text-lg font-semibold">Science Exhibition Projects</h4>
                 </div>
               </div>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-lg group">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg group ring-1 ring-slate-200/80">
               <img
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="3D Printing"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                src={microbialCycleImg}
+                alt="Microbial Cycle rangoli at science exhibition"
+                className="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h4 className="text-lg font-semibold">3D Printing Projects</h4>
+                  <h4 className="text-lg font-semibold">Creative Science Learning</h4>
                 </div>
               </div>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-lg group">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg group ring-1 ring-slate-200/80">
               <img
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Coding"
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                src={classroomImg}
+                alt="Students engaged in classroom learning"
+                className="w-full h-64 object-cover object-[center_20%] group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h4 className="text-lg font-semibold">Coding Sessions</h4>
+                  <h4 className="text-lg font-semibold">Hands-on Academics</h4>
                 </div>
               </div>
             </div>

@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import classroomImg from '../assets/classroom-students-writing.png'
+import hydraulicLiftImg from '../assets/hydraulic-lift-science-project.png'
+import scoutGuideImg from '../assets/scout-guide-group.png'
+import backpackImg from '../assets/backpack-distribution-washim.png'
+import ganeshImg from '../assets/ganesh-chaturthi-celebration.png'
+import celebrationImg from '../assets/school-celebration-rose.png'
 const News = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
 
@@ -18,7 +24,7 @@ const News = () => {
       date: 'December 10, 2024',
       title: 'Outstanding Board Results - Class 12 Students Excel',
       excerpt: 'Our Class 12 students have achieved remarkable results in the board examinations with 95% of students securing first division.',
-      image: 'https://images.unsplash.com/photo-1523240797355-351f22f4f9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: classroomImg,
       readTime: '3 min read',
       featured: true
     },
@@ -28,7 +34,7 @@ const News = () => {
       date: 'December 8, 2024',
       title: 'Annual Science Fair 2024 - A Resounding Success',
       excerpt: 'The annual science fair showcased innovative projects from students across all grades, demonstrating creativity and scientific thinking.',
-      image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: hydraulicLiftImg,
       readTime: '4 min read',
       featured: false
     },
@@ -38,7 +44,7 @@ const News = () => {
       date: 'December 5, 2024',
       title: 'Students Win Regional Mathematics Olympiad',
       excerpt: 'Our students secured top positions in the Regional Mathematics Olympiad, bringing pride to the school and community.',
-      image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: scoutGuideImg,
       readTime: '2 min read',
       featured: false
     },
@@ -48,7 +54,7 @@ const News = () => {
       date: 'December 3, 2024',
       title: 'New Digital Learning Platform Launch',
       excerpt: 'We are excited to announce the launch of our new digital learning platform that will enhance the educational experience.',
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: backpackImg,
       readTime: '5 min read',
       featured: false
     },
@@ -58,7 +64,7 @@ const News = () => {
       date: 'November 30, 2024',
       title: 'Cultural Festival 2024 - Celebrating Diversity',
       excerpt: 'The annual cultural festival brought together students, parents, and teachers to celebrate our diverse cultural heritage.',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: ganeshImg,
       readTime: '3 min read',
       featured: false
     },
@@ -68,7 +74,7 @@ const News = () => {
       date: 'November 28, 2024',
       title: 'New STEM Lab Inauguration',
       excerpt: 'Our new state-of-the-art STEM laboratory was inaugurated, providing students with hands-on learning experiences.',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: celebrationImg,
       readTime: '4 min read',
       featured: false
     }

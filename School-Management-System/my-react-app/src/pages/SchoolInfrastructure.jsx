@@ -1,5 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/infra-smartboard-classroom.png'
+import assemblyImg from '../assets/social-impact-assembly.png'
+import classroomImg from '../assets/classroom-students-writing.png'
+import scoutGuideImg from '../assets/scout-guide-group.png'
 
 const SchoolInfrastructure = () => {
   const facilities = [
@@ -11,7 +15,7 @@ const SchoolInfrastructure = () => {
       ),
       title: "Modern Classrooms",
       description: "Spacious, well-ventilated classrooms equipped with smart boards, projectors, and comfortable seating arrangements.",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: classroomImg
     },
     {
       icon: (
@@ -31,7 +35,7 @@ const SchoolInfrastructure = () => {
       ),
       title: "Sports Facilities",
       description: "State-of-the-art sports facilities including playgrounds, courts, and equipment for various sports activities.",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: scoutGuideImg
     },
     {
       icon: (
@@ -110,9 +114,9 @@ const SchoolInfrastructure = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="School Infrastructure"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Teacher leading Class 3 with an interactive smartboard at M.S.S.E. Primary School Washim"
+                  className="w-full h-[420px] md:h-[500px] object-cover object-[center_30%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-600/50 to-transparent"></div>
               </div>
@@ -174,9 +178,9 @@ const SchoolInfrastructure = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1560785496-3c9d27877182?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="School Campus"
-                className="w-full rounded-2xl shadow-2xl"
+                src={assemblyImg}
+                alt="School assembly with students and teachers in the campus courtyard"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3] object-[center_40%]"
               />
             </div>
             <div>

@@ -1,57 +1,125 @@
 import React, { useState, useEffect } from 'react';
 
+import microbialCycleImg from '../assets/microbial-cycle-rangoli.png';
+import scoutGuideImg from '../assets/scout-guide-group.png';
+import ganeshImg from '../assets/ganesh-chaturthi-celebration.png';
+import classroomImg from '../assets/classroom-students-writing.png';
+import awarenessMarchImg from '../assets/narayana-kids-awareness-march.png';
+import fieldTripImg from '../assets/field-trip-vednandini.png';
+import backpackImg from '../assets/backpack-distribution-washim.png';
+import celebrationImg from '../assets/school-celebration-rose.png';
+
 const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Replace these with your actual image imports
-  const gall1 = 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500';
-  const gall2 = 'https://images.unsplash.com/photo-1560785496-3c9d27877182?w=500';
-  const gall3 = 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=500';
-  const gall4 = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500';
-
   const galleryItems = [
     {
       id: 1,
-      image: gall1,
-      title: "Symphonics",
-      description: "An in-house phonics program for students from Pre-school to Std. V that aims to develop a strong foundation in the English language."
+      image: microbialCycleImg,
+      title: 'Science Exhibition — Microbial Cycle',
+      description:
+        'Students showcase creative science learning through a vibrant rangoli depicting the microbial cycle at our school exhibition.',
+      layout: 'tall',
     },
     {
       id: 2,
-      image: gall2,
-      title: "Remedial Learning",
-      description: "As every child learns at their own pace, Narayana Innovation Center provides resources that aid school teachers in providing additional support for students."
+      image: scoutGuideImg,
+      title: 'Scouts & Guides',
+      description:
+        'Our scouts and guides stand proudly with faculty, building discipline, leadership, and service-minded values.',
+      layout: 'wide',
     },
     {
       id: 3,
-      image: gall3,
-      title: "Spell The Beans",
-      description: "Narayana Innovation Center introduces the 'Spell the Beans' programme, which incorporates fun & engaging activities into the curriculum to help retain spellings."
+      image: ganeshImg,
+      title: 'Ganesh Chaturthi Celebration',
+      description:
+        'Students participate in cultural festivities with devotion, creativity, and respect for tradition.',
+      layout: 'tall',
     },
     {
       id: 4,
-      image: gall4,
-      title: "Theatre In Education",
-      description: "Taking a step beyond academics, Narayana Innovation Center introduces a Theatre in Education program that integrates interactive theatre practices and drama activities."
-    }
+      image: classroomImg,
+      title: 'Focused Classroom Learning',
+      description:
+        'A calm, engaging classroom where students apply themselves to reading, writing, and collaborative study.',
+      layout: 'standard',
+    },
+    {
+      id: 5,
+      image: awarenessMarchImg,
+      title: 'Community Awareness March',
+      description:
+        'Narayana\'s Kids students spread messages on water conservation and civic responsibility across Washim.',
+      layout: 'tall',
+    },
+    {
+      id: 6,
+      image: fieldTripImg,
+      title: 'Educational Field Trip',
+      description:
+        'Students and teachers explore beyond the classroom at Vednandini Agri Food Court — learning through experience.',
+      layout: 'wide',
+    },
+    {
+      id: 7,
+      image: backpackImg,
+      title: 'Backpack Distribution',
+      description:
+        'Teachers and students celebrate the distribution of new school backpacks, supporting every child\'s learning journey.',
+      layout: 'wide',
+    },
+    {
+      id: 8,
+      image: celebrationImg,
+      title: 'School Celebrations',
+      description:
+        'Festive moments that strengthen the bond between teachers, students, and our school community.',
+      layout: 'standard',
+    },
   ];
 
-  // For carousel functionality (if needed)
+  const imageContainerClass = (layout) => {
+    switch (layout) {
+      case 'tall':
+        return 'relative h-64 sm:h-72 overflow-hidden';
+      case 'wide':
+        return 'relative h-52 sm:h-56 overflow-hidden';
+      default:
+        return 'relative h-48 overflow-hidden';
+    }
+  };
+
+  const imageClass = (layout) => {
+    const base =
+      'w-full h-full transition-transform duration-300 group-hover:scale-110';
+    if (layout === 'tall') return `${base} object-cover object-center`;
+    if (layout === 'wide') return `${base} object-cover object-[center_30%]`;
+    return `${base} object-cover object-center`;
+  };
+
+  const gridItemClass = (layout) => {
+    if (layout === 'wide') return 'md:col-span-2';
+    return '';
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % galleryItems.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [galleryItems.length]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % galleryItems.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + galleryItems.length) % galleryItems.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + galleryItems.length) % galleryItems.length
+    );
   };
 
   const openModal = (item) => {
@@ -66,7 +134,7 @@ const Gallery = () => {
 
   const nextModalImage = () => {
     if (selectedImage) {
-      const currentIdx = galleryItems.findIndex(item => item.id === selectedImage.id);
+      const currentIdx = galleryItems.findIndex((item) => item.id === selectedImage.id);
       const nextIndex = (currentIdx + 1) % galleryItems.length;
       setSelectedImage(galleryItems[nextIndex]);
     }
@@ -74,8 +142,9 @@ const Gallery = () => {
 
   const prevModalImage = () => {
     if (selectedImage) {
-      const currentIdx = galleryItems.findIndex(item => item.id === selectedImage.id);
-      const prevIndex = (currentIdx - 1 + galleryItems.length) % galleryItems.length;
+      const currentIdx = galleryItems.findIndex((item) => item.id === selectedImage.id);
+      const prevIndex =
+        (currentIdx - 1 + galleryItems.length) % galleryItems.length;
       setSelectedImage(galleryItems[prevIndex]);
     }
   };
@@ -84,23 +153,22 @@ const Gallery = () => {
     <>
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-purple-600 mb-4">
-              A Glimpse into a Student's Journey at Narayana
+              A Glimpse into a Student&apos;s Journey at Narayana
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore our innovative educational programs designed to nurture every child's potential
+              Real moments from our classrooms, exhibitions, celebrations, and community activities in Washim
             </p>
           </div>
 
-          {/* Gallery Grid */}
           <div className="relative">
-            {/* Navigation Arrows - Only needed if using carousel view */}
             <button
               onClick={prevSlide}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border border-gray-200"
-              style={{ display: 'none' }} // Hidden since we're using grid view
+              style={{ display: 'none' }}
+              type="button"
+              aria-hidden
             >
               <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -110,32 +178,33 @@ const Gallery = () => {
             <button
               onClick={nextSlide}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border border-gray-200"
-              style={{ display: 'none' }} // Hidden since we're using grid view
+              style={{ display: 'none' }}
+              type="button"
+              aria-hidden
             >
               <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
 
-            {/* Gallery Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {galleryItems.map((item) => (
                 <div
                   key={item.id}
-                  className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden cursor-pointer"
+                  className={`group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden cursor-pointer border border-gray-100 ${gridItemClass(item.layout)}`}
                   onClick={() => openModal(item)}
+                  onKeyDown={(e) => e.key === 'Enter' && openModal(item)}
+                  role="button"
+                  tabIndex={0}
                 >
-                  {/* Image Container */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className={imageContainerClass(item.layout)}>
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      className={imageClass(item.layout)}
+                      loading="lazy"
                     />
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    {/* Click to view indicator */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="bg-white/90 rounded-full p-3 shadow-lg">
                         <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,37 +214,19 @@ const Gallery = () => {
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-purple-600 mb-3 group-hover:text-purple-700 transition-colors duration-300">
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold text-purple-600 mb-2 group-hover:text-purple-700 transition-colors duration-300">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
                       {item.description}
                     </p>
                   </div>
-
-                  {/* Hover Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                 </div>
-              ))}
-            </div>
-
-            {/* Dots Indicator - Only needed if using carousel view */}
-            <div className="flex justify-center mt-8 space-x-2" style={{ display: 'none' }}>
-              {galleryItems.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'bg-purple-600' : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
               ))}
             </div>
           </div>
 
-          {/* Additional Information */}
           <div className="mt-12 text-center">
             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200 shadow-sm">
               <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -189,24 +240,25 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Modal/Lightbox */}
       {isModalOpen && selectedImage && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-4xl w-full max-h-[90vh] bg-white rounded-2xl overflow-hidden shadow-2xl">
-            {/* Close Button */}
+          <div className="relative max-w-5xl w-full max-h-[90vh] bg-white rounded-2xl overflow-hidden shadow-2xl">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border border-gray-200"
+              type="button"
+              aria-label="Close"
             >
               <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
-            {/* Navigation Arrows */}
             <button
               onClick={prevModalImage}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border border-gray-200"
+              type="button"
+              aria-label="Previous image"
             >
               <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -216,29 +268,35 @@ const Gallery = () => {
             <button
               onClick={nextModalImage}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border border-gray-200"
+              type="button"
+              aria-label="Next image"
             >
               <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
 
-            {/* Image */}
-            <div className="relative h-96 md:h-[500px] overflow-hidden">
+            <div
+              className={`relative overflow-hidden bg-slate-900 ${
+                selectedImage.layout === 'tall'
+                  ? 'h-[min(70vh,600px)]'
+                  : 'h-96 md:h-[min(55vh,480px)]'
+              }`}
+            >
               <img
                 src={selectedImage.image}
                 alt={selectedImage.title}
-                className="w-full h-full object-cover"
+                className={`w-full h-full ${
+                  selectedImage.layout === 'wide'
+                    ? 'object-contain'
+                    : 'object-contain'
+                }`}
               />
             </div>
 
-            {/* Content */}
             <div className="p-6">
-              <h3 className="text-2xl font-bold text-purple-600 mb-4">
-                {selectedImage.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                {selectedImage.description}
-              </p>
+              <h3 className="text-2xl font-bold text-purple-600 mb-4">{selectedImage.title}</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">{selectedImage.description}</p>
             </div>
           </div>
         </div>

@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/lab-digital-whiteboard-waves.png'
+import curriculumImg from '../assets/curriculum-collaborative-learning.png'
+import steamStudentImg from '../assets/digital-learning-steam-student.png'
 
 const PersonalizedLearning = () => {
   const journeys = [
@@ -11,7 +14,7 @@ const PersonalizedLearning = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
-      image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+      image: heroImg
     },
     {
       title: "Skill Acceleration",
@@ -21,7 +24,7 @@ const PersonalizedLearning = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+      image: curriculumImg
     },
     {
       title: "Holistic Growth",
@@ -31,7 +34,7 @@ const PersonalizedLearning = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
       ),
-      image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+      image: steamStudentImg
     }
   ]
 
@@ -103,9 +106,9 @@ const PersonalizedLearning = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                  alt="AI Personalized Learning"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Students using an interactive digital whiteboard for personalized learning"
+                  className="w-full h-[500px] object-cover object-[center_35%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/50 to-transparent"></div>
               </div>
@@ -146,9 +149,9 @@ const PersonalizedLearning = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                alt="AI Recommendations"
-                className="w-full rounded-2xl shadow-2xl"
+                src={curriculumImg}
+                alt="Collaborative technology-enabled learning at Narayana's"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3]"
               />
             </div>
             <div>

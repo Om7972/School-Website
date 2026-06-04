@@ -1,5 +1,5 @@
 import React from 'react'
-import student from '../assets/student.jpg'
+import heroImage from '../assets/school-atrium-narayana-kids.png'
 
 const HeroSection = () => {
   const scrollToEnquiry = () => {
@@ -96,9 +96,9 @@ const HeroSection = () => {
               <div className="absolute -inset-2 bg-gradient-to-tr from-blue-400 via-indigo-400 to-purple-400 rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition-all duration-300"></div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/80">
                 <img
-                  src={student}
-                  alt="Student at Narayana Institute"
-                  className="w-[350px] h-[420px] object-cover object-top rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
+                  src={heroImage}
+                  alt="Narayana's Kids school atrium with colourful murals and open courtyard in Washim"
+                  className="w-full max-w-[380px] h-[min(520px,75vh)] sm:h-[480px] object-cover object-[center_45%] rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-[1.03]"
                 />
               </div>
               {/* Decorative Accent */}

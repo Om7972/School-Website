@@ -93,6 +93,11 @@ const Navbar = () => {
 
   const experienceItems = [
     {
+      name: "Student Experience — Campus Life",
+      description: "Photos and stories from academics, festivals, labs, and achievements at Washim.",
+      href: "/student-experience"
+    },
+    {
       name: "AI-Powered Personalized Learning Paths",
       description: "Dynamic journeys, AI recommendations, and holistic growth dashboards.",
       href: "/personalized-learning"

@@ -1,17 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/social-impact-assembly.png'
+import wellnessImg from '../assets/wellness-festival-celebration.png'
 
 const SocialImpactService = () => {
   const initiatives = [
     {
       title: "Community Projects",
       description: "AI matches students with NGOs, environmental campaigns, and social enterprises based on interests and availability.",
-      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+      image: heroImg
     },
     {
       title: "Impact Tracking",
       description: "Students log hours, reflections, and outcomes in a digital portfolio that highlights measurable community impact.",
-      image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+      image: wellnessImg
     },
     {
       title: "Recognition & Badges",
@@ -95,9 +97,9 @@ const SocialImpactService = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                  alt="Service Learning"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Students and teachers gathered for a school community assembly"
+                  className="w-full h-[500px] object-cover object-[center_40%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-600/50 to-transparent"></div>
               </div>
@@ -133,9 +135,9 @@ const SocialImpactService = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                alt="Impact Analytics"
-                className="w-full rounded-2xl shadow-2xl"
+                src={wellnessImg}
+                alt="Students celebrating together at a school festival"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3] object-center"
               />
             </div>
             <div>

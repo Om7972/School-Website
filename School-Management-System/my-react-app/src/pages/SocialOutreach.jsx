@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import awarenessMarchImg from '../assets/narayana-kids-awareness-march.png'
+import backpackImg from '../assets/backpack-distribution-washim.png'
 
 const SocialOutreach = () => {
   const programs = [
@@ -137,6 +139,48 @@ const SocialOutreach = () => {
                 <p className="text-slate-600">{stat.label}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Community in Action */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Community in Action</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Students and teachers leading outreach initiatives that make a real difference in Washim.
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="group relative overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200/80">
+              <img
+                src={awarenessMarchImg}
+                alt="Students holding Narayana's Kids banner during a water conservation awareness march"
+                className="w-full h-80 lg:h-[420px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-xl font-bold mb-2">Environmental Awareness March</h3>
+                <p className="text-sm text-slate-100">
+                  Students spread messages on water conservation and responsible citizenship across the community.
+                </p>
+              </div>
+            </div>
+            <div className="group relative overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200/80">
+              <img
+                src={backpackImg}
+                alt="Teachers and students with newly distributed school backpacks"
+                className="w-full h-80 lg:h-[420px] object-cover object-[center_40%] transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-xl font-bold mb-2">School Supply Distribution</h3>
+                <p className="text-sm text-slate-100">
+                  Supporting every learner with essential resources so they can begin the year prepared and confident.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/lab-digital-whiteboard-waves.png'
+import curriculumImg from '../assets/curriculum-collaborative-learning.png'
 
 const OurLabs = () => {
   const labs = [
@@ -24,7 +26,7 @@ const OurLabs = () => {
     {
       title: "Computer Laboratory",
       description: "Modern computer lab with high-speed computers, software, and internet connectivity for IT education and programming.",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: heroImg,
       equipment: ["Desktop computers", "Software suites", "3D printers", "Robotics kits"]
     },
     {
@@ -88,9 +90,9 @@ const OurLabs = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Our Labs"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Students learning with an interactive WAVES digital whiteboard"
+                  className="w-full h-[500px] object-cover object-[center_35%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/50 to-transparent"></div>
               </div>
@@ -166,9 +168,9 @@ const OurLabs = () => {
             </div>
             <div>
               <img
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Lab Features"
-                className="w-full rounded-2xl shadow-2xl"
+                src={curriculumImg}
+                alt="Hands-on collaborative learning in our activity spaces"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3]"
               />
             </div>
           </div>

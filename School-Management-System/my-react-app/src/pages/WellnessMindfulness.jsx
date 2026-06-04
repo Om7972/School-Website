@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/wellness-festival-celebration.png'
+import assemblyImg from '../assets/social-impact-assembly.png'
 
 const WellnessMindfulness = () => {
   const tools = [
@@ -78,9 +80,9 @@ const WellnessMindfulness = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                  alt="Wellness and Mindfulness"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Happy students celebrating a colourful school festival at Narayana's Kids"
+                  className="w-full h-[500px] object-cover object-[center_35%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-600/50 to-transparent"></div>
               </div>
@@ -116,9 +118,9 @@ const WellnessMindfulness = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1526958097901-5e6d742d3371?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                alt="Wellness Resources"
-                className="w-full rounded-2xl shadow-2xl"
+                src={assemblyImg}
+                alt="Calm, attentive students during a school gathering"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3] object-[center_40%]"
               />
             </div>
             <div>

@@ -31,6 +31,7 @@ import PersonalizedLearning from './pages/PersonalizedLearning'
 import SocialImpactService from './pages/SocialImpactService'
 import WellnessMindfulness from './pages/WellnessMindfulness'
 import AcademicChallenges from './pages/AcademicChallenges'
+import StudentExperience from './pages/StudentExperience'
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
             <Route path="/service-learning" element={<SocialImpactService />} />
             <Route path="/wellness-mindfulness" element={<WellnessMindfulness />} />
             <Route path="/academic-challenges" element={<AcademicChallenges />} />
+            <Route path="/student-experience" element={<StudentExperience />} />
           </Routes>
         </main>
       </div>

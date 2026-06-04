@@ -1,5 +1,5 @@
 import React from 'react'
-import teacher from '../assets/teacher.jpg'
+import collaborationImg from '../assets/students-laptop-collaboration.png'
 
 const InfoSection = () => {
   const handleLearnMore = () => {
@@ -14,12 +14,13 @@ const InfoSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Image */}
-          <div className="relative">
-            <div className="relative z-10">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-tr from-blue-400 to-indigo-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity duration-300" />
+            <div className="relative z-10 overflow-hidden rounded-2xl shadow-2xl ring-1 ring-slate-200/80">
               <img
-                src={teacher}
-                alt="Teacher at Narayana Institute"
-                className="w-full h-auto rounded-2xl shadow-2xl"
+                src={collaborationImg}
+                alt="Students collaborating around a laptop in a Narayana classroom in Washim"
+                className="w-full aspect-[4/3] object-cover object-[center_30%] transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </div>
           </div>

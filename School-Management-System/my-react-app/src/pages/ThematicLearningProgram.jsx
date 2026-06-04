@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import heroImg from '../assets/thematic-classroom-writing.png'
+import curriculumImg from '../assets/curriculum-collaborative-learning.png'
 
 const ThematicLearningProgram = () => {
   const themes = [
@@ -76,9 +78,9 @@ const ThematicLearningProgram = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Thematic Learning"
-                  className="w-full h-[500px] object-cover"
+                  src={heroImg}
+                  alt="Primary students writing and learning in the classroom"
+                  className="w-full h-[500px] object-cover object-[center_25%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-600/50 to-transparent"></div>
               </div>
@@ -151,9 +153,9 @@ const ThematicLearningProgram = () => {
             </div>
             <div>
               <img
-                src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Thematic Learning Benefits"
-                className="w-full rounded-2xl shadow-2xl"
+                src={curriculumImg}
+                alt="Integrated thematic learning with art, science, and collaboration"
+                className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-200/80 object-cover aspect-[4/3]"
               />
             </div>
           </div>
