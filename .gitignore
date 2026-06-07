@@ -1,0 +1,5 @@
+# Environment files (never commit secrets)
+School-Management-System/Backend/.env
+School-Management-System/Backend/.env.*
+School-Management-System/my-react-app/.env
+School-Management-System/my-react-app/.env.*
