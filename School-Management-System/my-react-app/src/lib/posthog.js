@@ -7,7 +7,8 @@ export function initPostHog() {
   if (!key || initialized) return;
 
   posthog.init(key, {
-    api_host: import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com',
+    api_host: import.meta.env.VITE_POSTHOG_HOST || '/ingest',
+    ui_host: import.meta.env.VITE_POSTHOG_UI_HOST || 'https://us.posthog.com',
     person_profiles: 'identified_only',
     capture_pageview: false,
     capture_pageleave: true,
