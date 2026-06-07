@@ -257,9 +257,9 @@ const Alumni = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredAlumni.map((alumni) => (
-              <div key={alumni.id} className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div key={alumni.id} className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
                 <div className="relative h-48">
                   <img
                     src={alumni.image}
@@ -272,7 +272,7 @@ const Alumni = () => {
                     </span>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-5 sm:p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-bold text-slate-800 mb-2">{alumni.name}</h3>
                   <p className="text-blue-600 font-semibold mb-1">{alumni.currentPosition}</p>
                   <p className="text-slate-600 text-sm mb-4">{alumni.company}, {alumni.location}</p>
@@ -291,23 +291,25 @@ const Alumni = () => {
                     </ul>
                   </div>
 
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-3">{alumni.story}</p>
+                  <p className="text-slate-600 text-sm mb-4 line-clamp-3 flex-1">{alumni.story}</p>
 
-                  <div className="flex space-x-3">
-                    <button 
+                  <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                    <button
+                      type="button"
                       onClick={() => handleConnect(alumni)}
-                      className="flex-1 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300 text-sm group"
+                      className="flex-1 inline-flex items-center justify-center gap-2 min-h-[44px] bg-blue-600 text-white font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-700 active:bg-blue-800 transition-colors duration-300 text-sm touch-manipulation"
                     >
-                      <svg className="w-4 h-4 mr-1 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                       </svg>
                       Connect
                     </button>
-                    <button 
+                    <button
+                      type="button"
                       onClick={() => handleViewProfile(alumni)}
-                      className="flex-1 border border-blue-600 text-blue-600 font-semibold py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors duration-300 text-sm group"
+                      className="flex-1 inline-flex items-center justify-center gap-2 min-h-[44px] border-2 border-blue-600 text-blue-600 font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-50 active:bg-blue-100 transition-colors duration-300 text-sm touch-manipulation"
                     >
-                      <svg className="w-4 h-4 mr-1 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                       View Profile
@@ -338,9 +340,9 @@ const Alumni = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {upcomingEvents.map((event) => (
-              <div key={event.id} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6">
+              <div key={event.id} className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-5 sm:p-6 flex flex-col">
                 <div className="text-sm font-semibold text-blue-600 mb-2">{event.type}</div>
                 <h3 className="text-xl font-bold text-slate-800 mb-3">{event.title}</h3>
                 <div className="space-y-2 text-sm text-slate-600 mb-4">
@@ -364,8 +366,11 @@ const Alumni = () => {
                     {event.location}
                   </div>
                 </div>
-                <p className="text-slate-600 mb-4">{event.description}</p>
-                <button className="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                <p className="text-slate-600 mb-4 flex-1">{event.description}</p>
+                <button
+                  type="button"
+                  className="w-full inline-flex items-center justify-center gap-2 min-h-[48px] mt-auto bg-blue-600 text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-700 active:bg-blue-800 transition-colors duration-300 touch-manipulation"
+                >
                   Register Now
                 </button>
               </div>
@@ -434,18 +439,19 @@ const Alumni = () => {
           <p className="text-xl text-blue-100 mb-8">
             Join our alumni network and stay connected with your alma mater and fellow graduates.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center px-4 sm:px-0">
             <Link
               to="/contact"
-              className="bg-white text-blue-600 font-semibold py-3 px-8 rounded-xl hover:bg-blue-50 transition-colors duration-300"
+              className="inline-flex items-center justify-center min-h-[48px] w-full sm:w-auto bg-white text-blue-600 font-semibold py-3 px-8 rounded-xl hover:bg-blue-50 active:bg-blue-100 transition-colors duration-300 touch-manipulation"
             >
               Contact Alumni Office
             </Link>
-            <button 
+            <button
+              type="button"
               onClick={handleJoinNetwork}
-              className="border-2 border-white text-white font-semibold py-3 px-8 rounded-xl hover:bg-white hover:text-blue-600 transition-colors duration-300 group"
+              className="inline-flex items-center justify-center gap-2 min-h-[48px] w-full sm:w-auto border-2 border-white text-white font-semibold py-3 px-8 rounded-xl hover:bg-white hover:text-blue-600 active:bg-blue-50 transition-colors duration-300 touch-manipulation"
             >
-              <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
               Join Alumni Network

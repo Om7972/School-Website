@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { API_BASE_URL } from '../lib/api'
 
 const EnquiryForm = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ const EnquiryForm = () => {
     setSubmitStatus('')
 
     try {
-      const response = await fetch('http://localhost:5000/api/enquiry', {
+      const response = await fetch(`${API_BASE_URL}/api/enquiry`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

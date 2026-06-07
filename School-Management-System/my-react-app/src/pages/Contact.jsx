@@ -271,26 +271,44 @@ const Contact = () => {
             <p className="text-lg text-slate-600">Visit our campus and experience the Narayana difference</p>
           </div>
           
-          {/* Google Maps Integration */}
-          {/* 
-             TO CUSTOMIZE YOUR COLLEGE LOCATION:
-             1. Go to Google Maps and search for your college
-             2. Click "Share" → "Embed a map"
-             3. Copy the iframe src URL and replace the one below
-             4. Update the college name in the title attribute
-           */}
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
             <iframe
-              src="https://www.google.com/maps/place/Narayana+kid's+School,+M.S.S.E+School,+Narayana+Sec.+%26+Higher+Sec.+School/@20.1236635,77.1386406,17z/data=!4m15!1m8!3m7!1s0x3bd0e3cbef8e9637:0x1cb5ac41109a543b!2sNarayana+kid's+School,+M.S.S.E+School,+Narayana+Sec.+%26+Higher+Sec.+School!8m2!3d20.1236585!4d77.1435115!10e1!16s%2Fg%2F11dyp20484!3m5!1s0x3bd0e3cbef8e9637:0x1cb5ac41109a543b!8m2!3d20.1236585!4d77.1435115!16s%2Fg%2F11dyp20484?entry=ttu&g_ep=EgoyMDI1MDgwMy4wIKXMDSoASAFQAw%3D%3D"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.615809936!2d77.1409365!3d20.1236585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd0e3cbef8e9637%3A0x1cb5ac41109a543b!2sNarayana%20kid%27s%20School%2C%20M.S.S.E%20School%2C%20Narayana%20Sec.%20%26%20Higher%20Sec.%20School!5e0!3m2!1sen!2sin!4v1717700000000!5m2!1sen!2sin"
               width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen=""
+              height="100%"
+              style={{ border: 0, minHeight: '280px' }}
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Narayana Institute Location"
-              className="w-full"
-            ></iframe>
+              title="Narayana's Kids School, Washim — Google Maps"
+              className="w-full h-[280px] sm:h-[380px] md:h-[450px]"
+            />
+          </div>
+
+          <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://maps.app.goo.gl/oL2jw6DN8EAyC45s5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 active:bg-blue-800 transition-colors touch-manipulation"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Open in Google Maps
+            </a>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=20.1236585,77.1435115"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-50 active:bg-blue-100 transition-colors touch-manipulation"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+              Get Directions
+            </a>
           </div>
           
           {/* Location Details */}
