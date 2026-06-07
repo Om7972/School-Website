@@ -178,16 +178,26 @@ const Navbar = () => {
       .slice(0, 6)
   }, [searchItems, searchQuery])
 
+  const isActive = (path) => location.pathname === path
+
+  const navLinkBase =
+    'relative font-medium text-sm px-3 py-1.5 rounded-lg transition-all duration-200 text-white hover:text-blue-200 hover:bg-white/10'
+
+  const navLinkActive = 'text-blue-200 bg-white/10'
+
+  const dropdownTriggerBase =
+    'font-medium text-sm px-3 py-1.5 rounded-lg transition-all duration-200 text-white hover:text-blue-200 hover:bg-white/10 flex items-center gap-2'
+
   return (
-    <div className="bg-white shadow-lg sticky top-0 z-50">
+    <div className="bg-white shadow-lg sticky top-0 z-50 border-b border-slate-100/80">
       {/* Top Bar */}
-      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-2">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-1.5">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-6">
+            <div className="flex items-center gap-5">
               <Link
                 to="/brochure"
-                className="flex items-center space-x-2 text-xs hover:text-blue-200 transition-colors duration-200 hover:scale-105 transform"
+                className="flex items-center gap-2.5 text-xs hover:text-blue-200 transition-colors duration-200 hover:scale-105 transform px-2 py-1 rounded-lg hover:bg-white/10"
               >
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -196,8 +206,8 @@ const Navbar = () => {
               </Link>
             </div>
             
-            <div className="flex items-center space-x-3">
-              <div className="relative">
+            <div className="flex items-center gap-5">
+              <div className="relative hidden sm:block">
                 <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 hover:bg-white/30 transition-all duration-200">
                   <input
                     type="text"
@@ -246,9 +256,10 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-              <button 
+              <button
+                type="button"
                 onClick={scrollToEnquiry}
-                className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded-full text-xs font-medium transition-all duration-200 transform hover:scale-105 shadow-lg"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded-full text-xs font-medium transition-all duration-200 transform hover:scale-105 shadow-lg whitespace-nowrap"
               >
                 Enquire Now
               </button>
@@ -259,30 +270,36 @@ const Navbar = () => {
 
       {/* Main Navigation */}
       <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="flex items-center justify-between py-3">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-6 py-2">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-white/30 transition-all duration-200">
+            <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
+              <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-all duration-200 shadow-sm">
                 <span className="text-white font-bold text-sm">N</span>
               </div>
-              <div>
+              <div className="leading-tight">
                 <div className="text-sm font-bold">Narayana's Kids Washim</div>
-                <div className="text-xs text-blue-200">Since 2009</div>
+                <div className="text-xs text-blue-200 mt-0.5">Since 2009</div>
               </div>
-            </div>
+            </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-6">
-              <Link to="/" className="text-white hover:text-blue-200 transition-all duration-200 font-medium relative group text-sm">
+            <nav className="hidden lg:flex items-center gap-1.5">
+              <Link
+                to="/"
+                className={`${navLinkBase} group ${isActive('/') ? navLinkActive : ''}`}
+              >
                 Home
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-200 group-hover:w-full"></span>
+                <span className={`absolute bottom-0.5 left-3 right-3 h-0.5 bg-blue-200 transition-all duration-200 ${isActive('/') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               </Link>
               
+              <div className="w-px h-6 bg-white/20 mx-1 hidden 2xl:block" aria-hidden="true" />
+
               {/* About Dropdown */}
               <div className="relative group">
-                <button 
-                  className="text-white hover:text-blue-200 transition-all duration-200 font-medium flex items-center space-x-1 text-sm"
+                <button
+                  type="button"
+                  className={`${dropdownTriggerBase} ${isAboutDropdownOpen ? 'bg-white/10 text-blue-200' : ''}`}
                   onMouseEnter={() => setIsAboutDropdownOpen(true)}
                   onMouseLeave={() => setIsAboutDropdownOpen(false)}
                 >
@@ -335,7 +352,7 @@ const Navbar = () => {
               <div className="relative group">
                 <Link
                   to="/why-narayana"
-                  className="text-white hover:text-blue-200 transition-all duration-200 font-medium flex items-center space-x-1 text-sm"
+                  className={`${dropdownTriggerBase} ${isWhyNarayanaDropdownOpen || isActive('/why-narayana') ? 'bg-white/10 text-blue-200' : ''}`}
                   onMouseEnter={() => setIsWhyNarayanaDropdownOpen(true)}
                   onMouseLeave={() => {
                     setIsWhyNarayanaDropdownOpen(false)
@@ -419,11 +436,13 @@ const Navbar = () => {
                 )}
               </div>
               
+              <div className="w-px h-6 bg-white/20 mx-1 hidden 2xl:block" aria-hidden="true" />
+
               {/* Admissions Dropdown */}
               <div className="relative group">
                 <Link
                   to="/admissions-ay-2026"
-                  className="text-white hover:text-blue-200 transition-all duration-200 font-medium flex items-center space-x-1 text-sm"
+                  className={`${dropdownTriggerBase} ${isAdmissionsDropdownOpen || isActive('/admissions-ay-2026') ? 'bg-white/10 text-blue-200' : ''}`}
                   onMouseEnter={() => setIsAdmissionsDropdownOpen(true)}
                   onMouseLeave={() => setIsAdmissionsDropdownOpen(false)}
                 >
@@ -456,7 +475,8 @@ const Navbar = () => {
               {/* Student Experience Dropdown */}
               <div className="relative group">
                 <button
-                  className="text-white hover:text-blue-200 transition-all duration-200 font-medium flex items-center space-x-1 text-sm"
+                  type="button"
+                  className={`${dropdownTriggerBase} ${isExperienceDropdownOpen ? 'bg-white/10 text-blue-200' : ''}`}
                   onMouseEnter={() => setIsExperienceDropdownOpen(true)}
                   onMouseLeave={() => setIsExperienceDropdownOpen(false)}
                 >
@@ -494,31 +514,47 @@ const Navbar = () => {
                 )}
               </div>
               
-              <Link to="/careers" className="text-white hover:text-blue-200 transition-all duration-200 font-medium relative group text-sm">
+              <div className="w-px h-6 bg-white/20 mx-1 hidden 2xl:block" aria-hidden="true" />
+
+              <Link
+                to="/careers"
+                className={`${navLinkBase} group ${isActive('/careers') ? navLinkActive : ''}`}
+              >
                 Careers
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-200 group-hover:w-full"></span>
+                <span className={`absolute bottom-0.5 left-3 right-3 h-0.5 bg-blue-200 transition-all duration-200 ${isActive('/careers') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               </Link>
-              
-              <Link to="/blogs" className="text-white hover:text-blue-200 transition-all duration-200 font-medium relative group text-sm">
+
+              <Link
+                to="/blogs"
+                className={`${navLinkBase} group ${isActive('/blogs') ? navLinkActive : ''}`}
+              >
                 Blogs
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-200 group-hover:w-full"></span>
+                <span className={`absolute bottom-0.5 left-3 right-3 h-0.5 bg-blue-200 transition-all duration-200 ${isActive('/blogs') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               </Link>
-              
-              <Link to="/alumni" className="text-white hover:text-blue-200 transition-all duration-200 font-medium relative group text-sm">
+
+              <Link
+                to="/alumni"
+                className={`${navLinkBase} group ${isActive('/alumni') ? navLinkActive : ''}`}
+              >
                 Alumni
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-200 group-hover:w-full"></span>
+                <span className={`absolute bottom-0.5 left-3 right-3 h-0.5 bg-blue-200 transition-all duration-200 ${isActive('/alumni') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               </Link>
-              
-              <Link to="/contact" className="text-white hover:text-blue-200 transition-all duration-200 font-medium relative group text-sm">
+
+              <Link
+                to="/contact"
+                className={`${navLinkBase} group ${isActive('/contact') ? navLinkActive : ''}`}
+              >
                 Contact
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-200 group-hover:w-full"></span>
+                <span className={`absolute bottom-0.5 left-3 right-3 h-0.5 bg-blue-200 transition-all duration-200 ${isActive('/contact') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               </Link>
             </nav>
 
             {/* Mobile Menu Button */}
-            <button 
-              className="lg:hidden text-white p-1 rounded-lg hover:bg-white/20 transition-all duration-200"
+            <button
+              type="button"
+              className="lg:hidden text-white p-2 rounded-lg hover:bg-white/20 transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -528,15 +564,16 @@ const Navbar = () => {
 
           {/* Enhanced Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden py-3 border-t border-blue-500">
-              <div className="flex flex-col space-y-2">
-                <Link to="/" className="text-white hover:text-blue-200 transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm">Home</Link>
+            <div className="lg:hidden py-2 border-t border-white/20">
+              <div className="flex flex-col gap-0.5 pb-2">
+                <Link to="/" className={`text-white hover:text-blue-200 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-medium ${isActive('/') ? 'bg-white/10 text-blue-200' : ''}`}>Home</Link>
                 
                 {/* Mobile About Section */}
                 <div className="space-y-1">
-                  <button 
+                  <button
+                    type="button"
                     onClick={() => setIsMobileAboutOpen(!isMobileAboutOpen)}
-                    className="w-full text-left text-white py-1 px-3 text-sm font-medium flex items-center justify-between"
+                    className="w-full text-left text-white py-2 px-3 text-sm font-medium flex items-center justify-between rounded-lg hover:bg-white/10 transition-colors"
                   >
                     <span>About Narayana</span>
                     <svg className={`w-4 h-4 transition-transform duration-200 ${isMobileAboutOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -545,18 +582,18 @@ const Navbar = () => {
                   </button>
                   
                   {isMobileAboutOpen && (
-                    <div className="ml-4 space-y-1 bg-white/10 rounded-lg p-2">
-                      <Link 
+                    <div className="ml-3 mr-1 space-y-1 bg-white/10 rounded-xl p-2 mt-1">
+                      <Link
                         to="/about-narayan"
-                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                       >
                         About Narayana
                       </Link>
                       {aboutMenuItems.map((item, index) => (
-                        <Link 
+                        <Link
                           key={index}
-                          to={item.href} 
-                          className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                          to={item.href}
+                          className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                         >
                           {item.name}
                         </Link>
@@ -567,9 +604,10 @@ const Navbar = () => {
                 
                 {/* Mobile Why Narayana Section */}
                 <div className="space-y-1">
-                  <button 
+                  <button
+                    type="button"
                     onClick={() => setIsMobileWhyOpen(!isMobileWhyOpen)}
-                    className="w-full text-left text-white py-1 px-3 text-sm font-medium flex items-center justify-between"
+                    className="w-full text-left text-white py-2 px-3 text-sm font-medium flex items-center justify-between rounded-lg hover:bg-white/10 transition-colors"
                   >
                     <span>Why Narayana</span>
                     <svg className={`w-4 h-4 transition-transform duration-200 ${isMobileWhyOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -578,46 +616,46 @@ const Navbar = () => {
                   </button>
                   
                   {isMobileWhyOpen && (
-                    <div className="ml-4 space-y-1 bg-white/10 rounded-lg p-2">
-                      <Link 
+                    <div className="ml-3 mr-1 space-y-1 bg-white/10 rounded-xl p-2 mt-1">
+                      <Link
                         to="/why-narayana"
-                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                       >
                         Why Narayana
                       </Link>
-                      <Link 
+                      <Link
                         to="/digital-learning"
-                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                       >
                         Digital Learning
                       </Link>
-                      <Link 
+                      <Link
                         to="/innovation-lab"
-                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                       >
                         Innovation Lab
                       </Link>
-                      <Link 
+                      <Link
                         to="/innovative-academic-programs"
-                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                       >
                         Innovative Academic Programs
                       </Link>
-                      <Link 
+                      <Link
                         to="/thematic-learning-program"
-                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                       >
                         Thematic Learning Program
                       </Link>
-                      <Link 
+                      <Link
                         to="/school-infrastructure"
-                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                       >
                         School Infrastructure
                       </Link>
-                      <Link 
+                      <Link
                         to="/our-labs"
-                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                        className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                       >
                         Our Labs
                       </Link>
@@ -627,9 +665,10 @@ const Navbar = () => {
                 
                 {/* Mobile Admissions Section */}
                 <div className="space-y-1">
-                  <button 
+                  <button
+                    type="button"
                     onClick={() => setIsMobileAdmissionsOpen(!isMobileAdmissionsOpen)}
-                    className="w-full text-left text-white py-1 px-3 text-sm font-medium flex items-center justify-between"
+                    className="w-full text-left text-white py-2 px-3 text-sm font-medium flex items-center justify-between rounded-lg hover:bg-white/10 transition-colors"
                   >
                     <span>Admissions</span>
                     <svg className={`w-4 h-4 transition-transform duration-200 ${isMobileAdmissionsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -638,12 +677,12 @@ const Navbar = () => {
                   </button>
                   
                   {isMobileAdmissionsOpen && (
-                    <div className="ml-4 space-y-1 bg-white/10 rounded-lg p-2">
+                    <div className="ml-3 mr-1 space-y-1 bg-white/10 rounded-xl p-2 mt-1">
                       {admissionsItems.map((item, index) => (
-                        <Link 
+                        <Link
                           key={index}
                           to={item.href}
-                          className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                          className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                         >
                           {item.name}
                         </Link>
@@ -654,9 +693,10 @@ const Navbar = () => {
 
                 {/* Mobile Student Experience Section */}
                 <div className="space-y-1">
-                  <button 
+                  <button
+                    type="button"
                     onClick={() => setIsMobileExperienceOpen(!isMobileExperienceOpen)}
-                    className="w-full text-left text-white py-1 px-3 text-sm font-medium flex items-center justify-between"
+                    className="w-full text-left text-white py-2 px-3 text-sm font-medium flex items-center justify-between rounded-lg hover:bg-white/10 transition-colors"
                   >
                     <span>Student Experience</span>
                     <svg className={`w-4 h-4 transition-transform duration-200 ${isMobileExperienceOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -665,12 +705,12 @@ const Navbar = () => {
                   </button>
                   
                   {isMobileExperienceOpen && (
-                    <div className="ml-4 space-y-1 bg-white/10 rounded-lg p-2">
+                    <div className="ml-3 mr-1 space-y-1 bg-white/10 rounded-xl p-2 mt-1">
                       {experienceItems.map((item, index) => (
-                        <Link 
+                        <Link
                           key={item.href}
                           to={item.href}
-                          className="block text-blue-200 hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm"
+                          className="block text-blue-200 hover:text-white transition-colors duration-200 py-2 px-4 rounded-lg hover:bg-white/10 text-sm"
                         >
                           {item.name}
                         </Link>
@@ -678,10 +718,10 @@ const Navbar = () => {
                     </div>
                   )}
                 </div>
-                <Link to="/careers" className="text-white hover:text-blue-200 transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm">Careers</Link>
-                <Link to="/blogs" className="text-white hover:text-blue-200 transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm">Blogs</Link>
-                <Link to="/alumni" className="text-white hover:text-blue-200 transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm">Alumni</Link>
-                <Link to="/contact" className="text-white hover:text-blue-200 transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/10 text-sm">Contact</Link>
+                <Link to="/careers" className={`text-white hover:text-blue-200 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-medium ${isActive('/careers') ? 'bg-white/10 text-blue-200' : ''}`}>Careers</Link>
+                <Link to="/blogs" className={`text-white hover:text-blue-200 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-medium ${isActive('/blogs') ? 'bg-white/10 text-blue-200' : ''}`}>Blogs</Link>
+                <Link to="/alumni" className={`text-white hover:text-blue-200 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-medium ${isActive('/alumni') ? 'bg-white/10 text-blue-200' : ''}`}>Alumni</Link>
+                <Link to="/contact" className={`text-white hover:text-blue-200 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-white/10 text-sm font-medium ${isActive('/contact') ? 'bg-white/10 text-blue-200' : ''}`}>Contact</Link>
               </div>
             </div>
           )}
