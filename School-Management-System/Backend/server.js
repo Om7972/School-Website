@@ -3,6 +3,7 @@ import cors from 'cors';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import { generateChatReply } from './services/chatService.js';
 
 dotenv.config();
 
@@ -11,8 +12,8 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // Email transporter configuration
 const createTransporter = () => {
@@ -228,6 +229,33 @@ app.post('/api/enquiry', async (req, res) => {
   }
 });
 
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { message, history, image } = req.body;
+
+    if (!message?.trim() && !image?.data) {
+      return res.status(400).json({
+        success: false,
+        message: 'Message or image is required',
+      });
+    }
+
+    const { reply, provider } = await generateChatReply({ message, history, image });
+
+    res.status(200).json({
+      success: true,
+      reply,
+      provider,
+    });
+  } catch (error) {
+    console.error('Chat error:', error);
+    res.status(500).json({
+      success: false,
+      message: error.message || 'Failed to process your message. Please try again.',
+    });
+  }
+});
+
 // Health check route
 app.get('/api/health', (req, res) => {
   res.json({ 
@@ -241,5 +269,6 @@ app.get('/api/health', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📧 Email functionality ready`);
+  console.log(`🤖 AI chatbot ready (Gemini → Groq fallback)`);
   console.log(`🌐 Health check: http://localhost:${PORT}/api/health`);
 }); 

@@ -1,5 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import ChatWidget from './components/ChatWidget'
+import { capturePageView } from './lib/posthog'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import AboutNarayan from './pages/AboutNarayan'
@@ -33,9 +36,20 @@ import WellnessMindfulness from './pages/WellnessMindfulness'
 import AcademicChallenges from './pages/AcademicChallenges'
 import StudentExperience from './pages/StudentExperience'
 
+function PostHogPageViewTracker() {
+  const location = useLocation()
+
+  useEffect(() => {
+    capturePageView(location.pathname, location.search)
+  }, [location.pathname, location.search])
+
+  return null
+}
+
 function App() {
   return (
     <Router>
+      <PostHogPageViewTracker />
       <div className="min-h-screen bg-gray-50">
         <Navbar />
         <main>
@@ -74,6 +88,7 @@ function App() {
             <Route path="/student-experience" element={<StudentExperience />} />
           </Routes>
         </main>
+        <ChatWidget />
       </div>
     </Router>
   )

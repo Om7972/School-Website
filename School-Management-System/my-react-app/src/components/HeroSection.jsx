@@ -31,7 +31,7 @@ const HeroSection = () => {
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-800 leading-tight mb-4 tracking-tight drop-shadow-sm animate-fade-in-up">
               Welcome to
               <span className="block bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent mt-2 animate-gradient-x">
-                Narayana's Sec. & Higher Sec. School
+                Narayana's Kids, Washim
               </span>
             </h1>
             <p className="text-lg md:text-2xl text-slate-600 mb-8 max-w-xl animate-fade-in-up delay-100">
@@ -106,15 +106,6 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Floating Chat Button */}
-      <div className="fixed bottom-8 right-8 z-50 animate-fade-in-up delay-500">
-        <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-        </button>
       </div>
     </section>
   )
