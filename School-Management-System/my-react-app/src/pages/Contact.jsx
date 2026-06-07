@@ -2,12 +2,9 @@ import React, { useState } from 'react'
 
 const SCHOOL_LAT = 20.1236585
 const SCHOOL_LNG = 77.1435115
-const GOOGLE_MAPS_EMBED =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.615809936!2d77.1409365!3d20.1236585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd0e3cbef8e9637%3A0x1cb5ac41109a543b!2sNarayana%20kid%27s%20School%2C%20M.S.S.E%20School%2C%20Narayana%20Sec.%20%26%20Higher%20Sec.%20School!5e0!3m2!1sen!2sin!4v1717700000000!5m2!1sen!2sin'
 const OSM_EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${SCHOOL_LNG - 0.012}%2C${SCHOOL_LAT - 0.008}%2C${SCHOOL_LNG + 0.012}%2C${SCHOOL_LAT + 0.008}&layer=mapnik&marker=${SCHOOL_LAT}%2C${SCHOOL_LNG}`
 
 const Contact = () => {
-  const [mapProvider, setMapProvider] = useState('osm')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -278,64 +275,17 @@ const Contact = () => {
             <p className="text-lg text-slate-600">Visit our campus and experience the Narayana difference</p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-2 justify-center mb-4">
-            <button
-              type="button"
-              onClick={() => setMapProvider('osm')}
-              className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors touch-manipulation ${
-                mapProvider === 'osm'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Map View
-            </button>
-            <button
-              type="button"
-              onClick={() => setMapProvider('google')}
-              className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors touch-manipulation ${
-                mapProvider === 'google'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Google Maps View
-            </button>
-          </div>
-
           <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100">
-            {mapProvider === 'google' ? (
-              <iframe
-                key="google-map"
-                src={GOOGLE_MAPS_EMBED}
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: '280px' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Narayana's Kids School, Washim — Google Maps"
-                className="w-full h-[280px] sm:h-[380px] md:h-[450px]"
-              />
-            ) : (
-              <iframe
-                key="osm-map"
-                src={OSM_EMBED}
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: '280px' }}
-                loading="lazy"
-                title="Narayana's Kids School, Washim — Map"
-                className="w-full h-[280px] sm:h-[380px] md:h-[450px]"
-              />
-            )}
+            <iframe
+              src={OSM_EMBED}
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: '280px' }}
+              loading="lazy"
+              title="Narayana's Kids School, Washim — Campus Location"
+              className="w-full h-[280px] sm:h-[380px] md:h-[450px]"
+            />
           </div>
-
-          {mapProvider === 'google' && (
-            <p className="mt-3 text-center text-xs text-slate-500">
-              If the map does not load, an ad blocker may be blocking Google Maps. Use Map View or the buttons below.
-            </p>
-          )}
 
           <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
             <a
