@@ -58,7 +58,12 @@ const createTransporter = () => {
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
-    }
+    },
+    pool: true,
+    maxConnections: 3,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 };
 
@@ -249,9 +254,6 @@ app.post('/api/enquiry', async (req, res) => {
 
     const transporter = createTransporter();
     
-    // Verify transporter connection before sending
-    await transporter.verify();
-    
     // Send email to admin
     const adminEmail = createEnquiryEmail(formData);
     await transporter.sendMail({
@@ -278,10 +280,14 @@ app.post('/api/enquiry', async (req, res) => {
   } catch (error) {
     console.error('Email sending error:', error.message);
     console.error('Error code:', error.code);
+    console.error('Full error:', error);
     
-    const userMessage = error.code === 'EAUTH'
-      ? 'Email authentication failed. Please contact the administrator.'
-      : 'Failed to send enquiry. Please try again later.';
+    let userMessage = 'Failed to send enquiry. Please try again later.';
+    if (error.code === 'EAUTH') {
+      userMessage = 'Email authentication failed. Please contact the administrator.';
+    } else if (error.code === 'ESOCKET' || error.code === 'ETIMEDOUT' || error.code === 'ECONNECTION') {
+      userMessage = 'Email server connection timed out. Please try again in a moment.';
+    }
     
     res.status(500).json({
       success: false,
