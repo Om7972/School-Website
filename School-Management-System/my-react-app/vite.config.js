@@ -3,15 +3,15 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 const posthogProxy = {
-  '/ingest/static': {
+  '/api/ingest/static': {
     target: 'https://us-assets.i.posthog.com',
     changeOrigin: true,
-    rewrite: (path) => path.replace(/^\/ingest/, ''),
+    rewrite: (path) => path.replace(/^\/api\/ingest/, ''),
   },
-  '/ingest': {
+  '/api/ingest': {
     target: 'https://us.i.posthog.com',
     changeOrigin: true,
-    rewrite: (path) => path.replace(/^\/ingest/, ''),
+    rewrite: (path) => path.replace(/^\/api\/ingest/, ''),
   },
 }
 
