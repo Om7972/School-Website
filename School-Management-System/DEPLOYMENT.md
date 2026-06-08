@@ -79,7 +79,7 @@ In Vercel → Project → **Settings** → **Environment Variables**:
 
 | Key | Value | Environments |
 |-----|-------|--------------|
-| `VITE_API_URL` | `https://YOUR-RENDER-URL.onrender.com` | Production, Preview, Development |
+| `VITE_API_URL` | `https://YOUR-RENDER-URL.onrender.com` (no trailing slash) | Production, Preview, Development |
 | `VITE_POSTHOG_KEY` | Your PostHog project API key | Production, Preview |
 | `VITE_POSTHOG_HOST` | `/ingest` | Production, Preview |
 | `VITE_POSTHOG_UI_HOST` | `https://us.posthog.com` | Production, Preview |
@@ -172,7 +172,9 @@ VITE_POSTHOG_UI_HOST=https://us.posthog.com
 
 | Issue | Fix |
 |-------|-----|
-| CORS error on enquiry/chat | Set `FRONTEND_URL` on Render to exact Vercel URL (no trailing slash) |
+| CORS error on enquiry/chat | Set `FRONTEND_URL` on Render to `https://narayana-kids.vercel.app` (no trailing slash). Redeploy Render. |
+| Double slash in API URL (`//api/enquiry`) | Set `VITE_API_URL` without trailing slash, redeploy Vercel |
+| PostHog 405 on `/ingest` | Ensure `vercel.json` ingest rewrites are deployed; redeploy Vercel after pull |
 | Chatbot not responding | Check Render logs; verify `GEMINI_API_KEY` and `GROQ_API_KEY` |
 | PostHog blocked | Ensure `VITE_POSTHOG_HOST=/ingest` and `vercel.json` is deployed |
 | 404 on page refresh | `vercel.json` SPA rewrite must be present |

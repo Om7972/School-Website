@@ -11,21 +11,40 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+const normalizeOrigin = (url) => (url ? url.replace(/\/+$/, '') : '');
+
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   'http://localhost:5173',
   'http://localhost:4173',
-].filter(Boolean);
+  'https://narayana-kids.vercel.app',
+]
+  .map(normalizeOrigin)
+  .filter(Boolean);
+
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+
+  const normalized = normalizeOrigin(origin);
+  if (allowedOrigins.includes(normalized)) return true;
+
+  // Allow Vercel preview deployments (e.g. narayana-kids-xxx.vercel.app)
+  if (normalized.endsWith('.vercel.app')) return true;
+
+  return process.env.NODE_ENV !== 'production';
+};
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
-      callback(null, true);
+    if (isAllowedOrigin(origin)) {
+      callback(null, origin || true);
     } else {
       callback(null, false);
     }
   },
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
