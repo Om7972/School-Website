@@ -3,10 +3,7 @@ import posthog from 'posthog-js';
 let initialized = false;
 
 function getPostHogHost() {
-  const raw = (import.meta.env.VITE_POSTHOG_HOST || '/api/ingest').replace(/\/+$/, '');
-  // Backward compat: old deployments used /ingest
-  if (raw === '/ingest') return '/api/ingest';
-  return raw;
+  return (import.meta.env.VITE_POSTHOG_HOST || '/ingest').replace(/\/+$/, '');
 }
 
 export function initPostHog() {

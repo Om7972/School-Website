@@ -1,20 +1,19 @@
 {
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 15
-    }
-  },
   "rewrites": [
     {
       "source": "/ingest/static/:path*",
-      "destination": "/api/ingest/static/:path*"
+      "destination": "https://us-assets.i.posthog.com/static/:path*"
+    },
+    {
+      "source": "/ingest/decide",
+      "destination": "https://us.i.posthog.com/decide"
     },
     {
       "source": "/ingest/:path*",
-      "destination": "/api/ingest/:path*"
+      "destination": "https://us.i.posthog.com/:path*"
     },
     {
-      "source": "/((?!api/|ingest/).*)",
+      "source": "/((?!ingest/).*)",
       "destination": "/index.html"
     }
   ]

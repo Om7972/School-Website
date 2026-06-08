@@ -81,7 +81,7 @@ In Vercel → Project → **Settings** → **Environment Variables**:
 |-----|-------|--------------|
 | `VITE_API_URL` | `https://YOUR-RENDER-URL.onrender.com` (no trailing slash) | Production, Preview, Development |
 | `VITE_POSTHOG_KEY` | Your PostHog project API key | Production, Preview |
-| `VITE_POSTHOG_HOST` | `/api/ingest` (not `/ingest`) | Production, Preview |
+| `VITE_POSTHOG_HOST` | `/ingest` | Production, Preview |
 | `VITE_POSTHOG_UI_HOST` | `https://us.posthog.com` | Production, Preview |
 
 > `VITE_*` variables are baked in at build time. Redeploy after changing them.
@@ -94,9 +94,9 @@ In Vercel → Project → **Settings** → **Environment Variables**:
 
 ### Step 4: SPA + PostHog routing
 
-`vercel.json` + `api/ingest/` serverless functions handle:
+`vercel.json` rewrites handle:
 - React Router — all routes serve `index.html`
-- PostHog proxy — `/api/ingest` forwards to PostHog (avoids ad-blockers)
+- PostHog proxy — `/ingest` forwards to PostHog via Vercel rewrites (avoids ad-blockers)
 
 No extra configuration needed.
 
@@ -174,9 +174,9 @@ VITE_POSTHOG_UI_HOST=https://us.posthog.com
 |-------|-----|
 | CORS error on enquiry/chat | Set `FRONTEND_URL` on Render to `https://narayana-kids.vercel.app` (no trailing slash). Redeploy Render. |
 | Double slash in API URL (`//api/enquiry`) | Set `VITE_API_URL` without trailing slash, redeploy Vercel |
-| PostHog 404/405 on `/ingest` | Set `VITE_POSTHOG_HOST=/api/ingest` and redeploy Vercel (uses serverless proxy) |
+| PostHog 404/405 on `/ingest` | Set `VITE_POSTHOG_HOST=/ingest` and redeploy Vercel |
 | Chatbot not responding | Check Render logs; verify `GEMINI_API_KEY` and `GROQ_API_KEY` |
-| PostHog blocked | Ensure `VITE_POSTHOG_HOST=/ingest` and `vercel.json` is deployed |
+| PostHog blocked | Ensure `VITE_POSTHOG_HOST=/ingest` and `vercel.json` rewrites are deployed |
 | 404 on page refresh | `vercel.json` SPA rewrite must be present |
 | Render cold start slow | Free tier sleeps after 15 min — first request may take ~30s |
 | Emails not sending | Use Gmail App Password, not regular password |

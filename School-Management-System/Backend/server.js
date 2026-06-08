@@ -225,6 +225,15 @@ app.get('/', (req, res) => {
 // Routes
 app.post('/api/enquiry', async (req, res) => {
   try {
+    // Check email configuration upfront
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Email config missing: EMAIL_USER or EMAIL_PASS not set');
+      return res.status(503).json({
+        success: false,
+        message: 'Email service is not configured. Please contact the administrator.'
+      });
+    }
+
     const formData = req.body;
     
     // Validate required fields
@@ -239,6 +248,9 @@ app.post('/api/enquiry', async (req, res) => {
     }
 
     const transporter = createTransporter();
+    
+    // Verify transporter connection before sending
+    await transporter.verify();
     
     // Send email to admin
     const adminEmail = createEnquiryEmail(formData);
@@ -264,10 +276,16 @@ app.post('/api/enquiry', async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Email sending error:', error);
+    console.error('Email sending error:', error.message);
+    console.error('Error code:', error.code);
+    
+    const userMessage = error.code === 'EAUTH'
+      ? 'Email authentication failed. Please contact the administrator.'
+      : 'Failed to send enquiry. Please try again later.';
+    
     res.status(500).json({
       success: false,
-      message: 'Failed to send enquiry. Please try again later.'
+      message: userMessage
     });
   }
 });
