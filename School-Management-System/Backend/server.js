@@ -46,6 +46,8 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+app.options('*', cors());
+
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
@@ -213,6 +215,13 @@ const createConfirmationEmail = (formData) => {
   };
 };
 
+app.get('/', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Narayana Institute API — use /api/health, /api/enquiry, /api/chat',
+  });
+});
+
 // Routes
 app.post('/api/enquiry', async (req, res) => {
   try {
@@ -301,8 +310,10 @@ app.get('/api/health', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
+  const emailReady = Boolean(process.env.EMAIL_USER && process.env.EMAIL_PASS);
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📧 Email functionality ready`);
+  console.log(`📧 Email: ${emailReady ? 'configured' : 'MISSING — set EMAIL_USER and EMAIL_PASS on Render'}`);
+  console.log(`🌐 CORS allowed: ${allowedOrigins.join(', ') || 'none'} + *.vercel.app`);
   console.log(`🤖 AI chatbot ready (Gemini → Groq fallback)`);
   console.log(`🌐 Health check: http://localhost:${PORT}/api/health`);
 }); 

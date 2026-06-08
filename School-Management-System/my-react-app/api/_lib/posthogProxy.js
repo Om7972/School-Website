@@ -17,11 +17,14 @@ export async function proxyPostHog(req, res, upstreamBase) {
   const pathParam = req.query.path;
   const pathStr = Array.isArray(pathParam) ? pathParam.join('/') : pathParam || '';
 
-  const url = new URL(req.url, `https://${req.headers.host}`);
-  const targetUrl = `${upstreamBase}/${pathStr}${url.search}`;
+  const requestUrl = req.url || '';
+  const queryIndex = requestUrl.indexOf('?');
+  const search = queryIndex >= 0 ? requestUrl.slice(queryIndex) : '';
+
+  const targetUrl = `${upstreamBase.replace(/\/$/, '')}/${pathStr}${search}`;
 
   const headers = {};
-  const forwardHeaders = ['content-type', 'content-encoding', 'user-agent', 'accept'];
+  const forwardHeaders = ['content-type', 'content-encoding', 'user-agent', 'accept', 'accept-encoding'];
   for (const header of forwardHeaders) {
     if (req.headers[header]) {
       headers[header] = req.headers[header];

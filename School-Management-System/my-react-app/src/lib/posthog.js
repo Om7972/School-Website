@@ -2,17 +2,25 @@ import posthog from 'posthog-js';
 
 let initialized = false;
 
+function getPostHogHost() {
+  const raw = (import.meta.env.VITE_POSTHOG_HOST || '/api/ingest').replace(/\/+$/, '');
+  // Backward compat: old deployments used /ingest
+  if (raw === '/ingest') return '/api/ingest';
+  return raw;
+}
+
 export function initPostHog() {
   const key = import.meta.env.VITE_POSTHOG_KEY;
   if (!key || initialized) return;
 
   posthog.init(key, {
-    api_host: (import.meta.env.VITE_POSTHOG_HOST || '/api/ingest').replace(/\/$/, ''),
+    api_host: getPostHogHost(),
     ui_host: import.meta.env.VITE_POSTHOG_UI_HOST || 'https://us.posthog.com',
     person_profiles: 'identified_only',
     capture_pageview: false,
     capture_pageleave: true,
     autocapture: true,
+    disable_session_recording: true,
   });
 
   initialized = true;

@@ -81,7 +81,7 @@ In Vercel → Project → **Settings** → **Environment Variables**:
 |-----|-------|--------------|
 | `VITE_API_URL` | `https://YOUR-RENDER-URL.onrender.com` (no trailing slash) | Production, Preview, Development |
 | `VITE_POSTHOG_KEY` | Your PostHog project API key | Production, Preview |
-| `VITE_POSTHOG_HOST` | `/api/ingest` | Production, Preview |
+| `VITE_POSTHOG_HOST` | `/api/ingest` (not `/ingest`) | Production, Preview |
 | `VITE_POSTHOG_UI_HOST` | `https://us.posthog.com` | Production, Preview |
 
 > `VITE_*` variables are baked in at build time. Redeploy after changing them.

@@ -1,7 +1,20 @@
 {
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 15
+    }
+  },
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/ingest/static/:path*",
+      "destination": "/api/ingest/static/:path*"
+    },
+    {
+      "source": "/ingest/:path*",
+      "destination": "/api/ingest/:path*"
+    },
+    {
+      "source": "/((?!api/|ingest/).*)",
       "destination": "/index.html"
     }
   ]

@@ -59,7 +59,16 @@ const EnquiryForm = () => {
         })
       })
 
-      const data = await response.json()
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error('Server returned an invalid response. Please try again later.');
+      }
+
+      if (!response.ok) {
+        throw new Error(data.message || `Request failed (${response.status})`);
+      }
 
       if (data.success) {
         setSubmitStatus('success')
@@ -84,7 +93,7 @@ const EnquiryForm = () => {
     } catch (error) {
       console.error('Submission error:', error)
       setSubmitStatus('error')
-      setSubmitMessage('Network error. Please check your connection and try again.')
+      setSubmitMessage(error.message || 'Network error. Please check your connection and try again.')
     } finally {
       setIsSubmitting(false)
     }
