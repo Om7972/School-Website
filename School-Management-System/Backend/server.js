@@ -54,7 +54,10 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 // Email transporter configuration
 const createTransporter = () => {
   return nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // upgrade later with STARTTLS
+    requireTLS: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
