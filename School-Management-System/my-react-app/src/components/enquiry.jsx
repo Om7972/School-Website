@@ -42,7 +42,8 @@ const EnquiryForm = () => {
     setSubmitStatus('')
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/enquiry`, {
+      // Use local Vercel Serverless function instead of Render backend
+      const response = await fetch('/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
