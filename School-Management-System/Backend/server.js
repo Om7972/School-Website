@@ -3,7 +3,11 @@ import cors from 'cors';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import dns from 'dns';
 import { generateChatReply } from './services/chatService.js';
+
+// Fix Render IPv6 outbound timeout issue by forcing IPv4 resolution
+dns.setDefaultResultOrder('ipv4first');
 
 dotenv.config();
 
